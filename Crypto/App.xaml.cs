@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Crypto.Services.APICoinCap;
 using System.Windows;
 
 namespace Crypto
@@ -13,5 +8,12 @@ namespace Crypto
 	/// </summary>
 	public partial class App : Application
 	{
+		protected override async void OnStartup(StartupEventArgs e)
+		{
+			CurrencyService currencyService = new CurrencyService();
+			var result = await currencyService.GetCurrency();
+
+			base.OnStartup(e);
+		}
 	}
 }

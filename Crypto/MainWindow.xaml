@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Crypto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Crypto" 
+        Height="600" 
+        Width="850" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent">
+
+    <Grid MouseDown="Drag">
+        <Border Background="#212529" CornerRadius="20"/>
+        <Button x:Name="CloseButton" Style="{DynamicResource CloseButton}" Click="CloseButton_Click" />
 
     </Grid>
+
 </Window>
