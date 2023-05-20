@@ -1,4 +1,4 @@
-﻿using Crypto.Services.APICoinCap;
+﻿using Crypto.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,6 +6,6 @@ namespace Crypto.Services
 {
     public interface ICryptocurrencyService
 	{
-		Task<IEnumerable<Cryptocurrency>> GetCurrency();
+		Task<IEnumerable<CurrencyModel>> GetCurrency();
 	}
 }

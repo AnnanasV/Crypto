@@ -1,12 +1,11 @@
 ﻿<Application x:Class="Crypto.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Crypto"
-             StartupUri="MainWindow.xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Utilities/LightTemplate.xaml" />
                 <ResourceDictionary Source="Utilities/DarkTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

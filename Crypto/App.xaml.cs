@@ -1,4 +1,4 @@
-﻿using Crypto.Services.APICoinCap;
+﻿using Crypto.ViewModels;
 using System.Windows;
 
 namespace Crypto
@@ -10,8 +10,8 @@ namespace Crypto
 	{
 		protected override async void OnStartup(StartupEventArgs e)
 		{
-			CurrencyService currencyService = new CurrencyService();
-			var result = await currencyService.GetCurrency();
+			MainWindow = new MainWindow() { DataContext = new MainVM() };
+			MainWindow.Show();
 
 			base.OnStartup(e);
 		}
