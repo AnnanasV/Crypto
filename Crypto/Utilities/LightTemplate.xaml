@@ -3,14 +3,14 @@
 
 
     <Style x:Key="BorderTheme" TargetType="Border">
-        <Setter Property="Background" Value="#E0E0E0" />
+        <Setter Property="Background" Value="#E5E5E5" />
     </Style>
 
     <Style x:Key="Btn" TargetType="Button">
         <Setter Property="Height" Value="35" />
         <Setter Property="Width" Value="35" />
         <Setter Property="Foreground" Value="#616161" />
-        <Setter Property="Background" Value="#E0E0E0" />
+        <Setter Property="Background" Value="#E5E5E5" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="Arial Black" />
         <Setter Property="FontSize" Value="24" />
@@ -33,7 +33,7 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#616161" />
-                <Setter Property="Foreground" Value="#E0E0E0" />
+                <Setter Property="Foreground" Value="#E5E5E5" />
             </Trigger>
         </Style.Triggers>
 
@@ -42,6 +42,7 @@
     <Style x:Key="Text" TargetType="TextBlock">
         <Setter Property="FontSize" Value="30" />
         <Setter Property="FontFamily" Value="Yu Gothic UI Semibold" />
+        <Setter Property="Foreground" Value="#292929" />
     </Style>
 
     <Style x:Key="SwitchColorMode" TargetType="ToggleButton">

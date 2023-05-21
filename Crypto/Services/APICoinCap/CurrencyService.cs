@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 using Crypto.Models;
 
@@ -18,15 +20,12 @@ namespace Crypto.Services.APICoinCap
 				string jsonResponse = await response.Content.ReadAsStringAsync();
 				if (response.IsSuccessStatusCode)
 				{
-					var data = JsonSerializer.Deserialize<CryptocurrencyList>(jsonResponse, new JsonSerializerOptions()
-					{
-						PropertyNameCaseInsensitive = true
-					});
+					var options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true, NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.AllowNamedFloatingPointLiterals };
+					var data = JsonSerializer.Deserialize<CryptocurrencyList>(jsonResponse, options);
 
 					return data.Cryptocurrencies;
 				}
-				else return null;
-
+				return null;
 			}
 		}
 	}

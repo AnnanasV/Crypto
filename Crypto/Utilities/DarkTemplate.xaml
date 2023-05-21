@@ -2,14 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="BorderTheme" TargetType="Border">
-        <Setter Property="Background" Value="#202020" />
+        <Setter Property="Background" Value="#292929" />
     </Style>
 
     <Style x:Key="Btn" TargetType="Button">
         <Setter Property="Height" Value="35" />
         <Setter Property="Width" Value="35" />
         <Setter Property="Foreground" Value="#BDBDBD" />
-        <Setter Property="Background" Value="#202020" />
+        <Setter Property="Background" Value="#292929" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="Arial Black" />
         <Setter Property="FontSize" Value="24" />
@@ -28,11 +28,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#BDBDBD" />
-                <Setter Property="Foreground" Value="#202020" />
+                <Setter Property="Foreground" Value="#292929" />
             </Trigger>
         </Style.Triggers>
 
@@ -63,6 +63,23 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="TableData" TargetType="ListViewItem">
+        <Setter Property="Background" Value="#2F2F2F" />
+        <Setter Property="Foreground" Value="#FFFFFF" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="0, 5, 0, 0" />
+        <Setter Property="Height" Value="55" />
+        <Setter Property="Focusable" Value="false"/>
+
+    </Style>
+
+    <Style x:Key="Table" TargetType="ListView">
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="#111111" />
+
     </Style>
 
 </ResourceDictionary>

@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Crypto.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="650">
+             d:DesignHeight="635" d:DesignWidth="780">
 
     <UserControl.DataContext>
         <vm:TopCryprocurrenciesVM />
     </UserControl.DataContext>
 
     <Grid>
-        <Border Style="{DynamicResource BorderTheme}" CornerRadius="0, 20, 20, 0" />
+        <Border Style="{DynamicResource BorderTheme}" CornerRadius="0, 0, 20, 0" />
 
         <Grid>
 
@@ -27,24 +27,20 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Top cryprocurrencies" Style="{DynamicResource Text}" />
             </Grid>
-            <Grid Grid.Row="1" Margin="30, 20, 30, 20">
+            <Grid Grid.Row="1" Margin="30, 0, 30, 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
 
-                <ListView Grid.Column="0" ItemsSource="{Binding Cryptocurrencies}">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
+                <ListView Grid.Column="0" ItemsSource="{Binding Cryptocurrencies}" MaxHeight="500" Style="{DynamicResource Table}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource TableData}" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Rank">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Rank, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Grid Width="30">
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding Rank, UpdateSourceTrigger=PropertyChanged}" FontSize="14" />
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -52,39 +48,14 @@
                             <GridViewColumn Header="Name">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Supply">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Change %">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ChangePercent24Hr, UpdateSourceTrigger=PropertyChanged}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Symbol">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Symbol, UpdateSourceTrigger=PropertyChanged}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="VolumeUsd24Hr">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Grid Width="200">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="28" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                                            <TextBlock Grid.Row="1" Text="{Binding Symbol, UpdateSourceTrigger=PropertyChanged}" FontSize="13" />
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -92,7 +63,35 @@
                             <GridViewColumn Header="Price">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged}" />
+                                        <Grid Width="150" Margin="0, 0, 15, 0">
+                                            <TextBlock HorizontalAlignment="Right" Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged, StringFormat=${0:F3}}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Supply">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid Width="100">
+                                            <TextBlock HorizontalAlignment="Left" Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Change %">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ChangePercent24Hr, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}%}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="VolumeUsd24Hr">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
