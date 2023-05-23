@@ -66,5 +66,40 @@
         </Setter>
     </Style>
 
+    <Style x:Key="TableData" TargetType="ListViewItem">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="0, 5, 0, 0" />
+        <Setter Property="Height" Value="55" />
+        <Setter Property="IsEnabled" Value="False" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FEFEFE" />
+                <Setter Property="Foreground" Value="#2F2F2F" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
+    <Style x:Key="Table" TargetType="ListView">
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="#D8DADC" />
+
+    </Style>
+
+    <Style x:Key="Header" TargetType="GridViewColumnHeader">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                    <Border BorderThickness="1" Background="Transparent">
+                        <TextBlock x:Name="ContentHeader" Text="{TemplateBinding Content}" Padding="5, 5, 5, 0" Width="{TemplateBinding Width}" TextAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="0, 0, 0, 10" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Foreground" Value="#8A7f72" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    
 </ResourceDictionary>
