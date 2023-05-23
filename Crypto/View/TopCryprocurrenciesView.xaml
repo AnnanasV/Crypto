@@ -15,6 +15,10 @@
         <ResourceDictionary>
             <local:PercentsToColorConverter x:Key="PercentsToColorConverter"/>
             <local:ImageConverter x:Key="ImageConverter" />
+            <local:NumberConverter x:Key="NumberConverter" />
+            <Style TargetType="ListViewItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -71,35 +75,33 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Price">
+                            <GridViewColumn Header="Price" Width="Auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid Width="120" Margin="0, 0, 20, 0">
-                                            <TextBlock FontSize="16" HorizontalAlignment="Right" Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged, StringFormat=${0:F3}}" />
+                                        <Grid>
+                                            <TextBlock FontSize="16" TextAlignment="Right" Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged, StringFormat=${0:F3}, Converter={StaticResource NumberConverter}, ConverterParameter=PriceUsd}" />
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Supply">
+                            <GridViewColumn Header="Supply" Width="Auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid Width="100">
-                                            <TextBlock HorizontalAlignment="Left" FontSize="16" Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
-                                        </Grid>
+                                        <TextBlock HorizontalAlignment="Left" FontSize="16" Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}, Converter={StaticResource NumberConverter}}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Volume (24h)">
+                            <GridViewColumn Header="Volume (24h)" Width="Auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock FontSize="16" Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}}" />
+                                        <TextBlock FontSize="16" Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}, Converter={StaticResource NumberConverter}}" />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Change (24h)">
+                            <GridViewColumn Width="Auto" Header="Change (24h)">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid Width="100">

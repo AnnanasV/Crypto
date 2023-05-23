@@ -98,7 +98,7 @@
         </Setter>
         <Setter Property="Margin" Value="0, 0, 0, 10" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
-        <Setter Property="Foreground" Value="#8A7f72" />
+        <Setter Property="Foreground" Value="#6B655D" />
         <Setter Property="FontSize" Value="16" />
     </Style>
     
