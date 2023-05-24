@@ -5,6 +5,9 @@ namespace Crypto.Models
 	public class CurrencyModel
 	{
 
+		[JsonPropertyName("id")]
+		public string Id { get; set; }
+
 		[JsonPropertyName("rank")]
 		public string Rank { get; set; }
 

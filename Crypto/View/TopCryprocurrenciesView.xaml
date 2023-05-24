@@ -16,9 +16,6 @@
             <local:PercentsToColorConverter x:Key="PercentsToColorConverter"/>
             <local:ImageConverter x:Key="ImageConverter" />
             <local:NumberConverter x:Key="NumberConverter" />
-            <Style TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -30,19 +27,26 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0" Margin="30, 20, 30, 20" >
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="250" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Top cryprocurrencies" Style="{DynamicResource Text}" />
+                <TextBlock Grid.Column="0" Text="Top cryprocurrencies" Margin="30, 20, 30, 20" Style="{DynamicResource Text}" />
+                <TextBlock Grid.Column="1" Text="Search:" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#858585" />
+                <TextBox x:Name="Searching" Grid.Column="2" Text="{Binding SearchText, Mode=TwoWay,
+                         UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"
+                         Style="{DynamicResource SearchBox}" />
             </Grid>
             <Grid Grid.Row="1" Margin="30, 0, 30, 20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <ListView x:Name="TopCurrenciesLV" Grid.Column="0" ItemsSource="{Binding Cryptocurrencies}" MaxHeight="500" Style="{DynamicResource Table}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.ScrollUnit="Pixel" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemContainerStyle="{DynamicResource TableData}" >
+                <ListView Grid.Column="0" ItemsSource="{Binding SelectedCurrencies, Mode=TwoWay,
+                          UpdateSourceTrigger=PropertyChanged}" MaxHeight="500"
+                          Style="{DynamicResource Table}"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          VirtualizingPanel.ScrollUnit="Pixel"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                          ItemContainerStyle="{DynamicResource TableData}" >
                     <ListView.View>
                         <GridView x:Name="TopCurrenciesGV" ColumnHeaderContainerStyle="{DynamicResource Header}">
                             <GridViewColumn Header="Rank">
@@ -75,25 +79,27 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Price" Width="Auto">
+                            <GridViewColumn Header="Price">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <TextBlock FontSize="16" TextAlignment="Right" Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged, StringFormat=${0:F3}, Converter={StaticResource NumberConverter}, ConverterParameter=PriceUsd}" />
+                                        <Grid Width="120" Margin="0, 0, 20, 0">
+                                            <TextBlock FontSize="16" HorizontalAlignment="Right" Text="{Binding PriceUsd, UpdateSourceTrigger=PropertyChanged, StringFormat=${0:F3}, Converter={StaticResource NumberConverter}, ConverterParameter=PriceUsd}" />
                                         </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Supply" Width="Auto">
+                            <GridViewColumn Header="Supply">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock HorizontalAlignment="Left" FontSize="16" Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}, Converter={StaticResource NumberConverter}}" />
+                                        <Grid Width="100">
+                                            <TextBlock HorizontalAlignment="Left" FontSize="16" Text="{Binding Supply, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}, Converter={StaticResource NumberConverter}}" />
+                                        </Grid>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Volume (24h)" Width="Auto">
+                            <GridViewColumn Header="Volume (24h)">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock FontSize="16" Text="{Binding VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:F2}, Converter={StaticResource NumberConverter}}" />
@@ -101,7 +107,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Width="Auto" Header="Change (24h)">
+                            <GridViewColumn Header="Change (24h)">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid Width="100">
@@ -114,7 +120,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-
             </Grid>
         </Grid>
 

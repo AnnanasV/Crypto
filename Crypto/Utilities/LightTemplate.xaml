@@ -101,5 +101,21 @@
         <Setter Property="Foreground" Value="#6B655D" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-    
+
+    <Style x:Key="SearchBox" TargetType="TextBox">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Margin" Value="0, 30, 30, 30" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="#D8DADC" CornerRadius="10">
+                        <TextBox Margin="2" Background="Transparent" Foreground="#9C9996" VerticalAlignment="Center" Text="{Binding SearchText}" BorderThickness="0" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -8,7 +8,8 @@ namespace Crypto.ViewModels
 
         public MainVM()
         {
-            CurrentViewModel = new TopCryprocurrenciesVM();
+            CurrentViewModel = new TopCryprocurrenciesVM(); // will be navigation
         }
+
     }
 }

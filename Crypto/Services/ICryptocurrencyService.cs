@@ -6,6 +6,6 @@ namespace Crypto.Services
 {
     public interface ICryptocurrencyService
 	{
-		Task<IEnumerable<CurrencyModel>> GetCurrency();
+		Task<IEnumerable<CurrencyModel>> GetCurrency(string properties);
 	}
 }

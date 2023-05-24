@@ -9,11 +9,11 @@ namespace Crypto.Services.APICoinCap
 {
 	public class CurrencyService : ICryptocurrencyService
 	{
-		public async Task<IEnumerable<CurrencyModel>> GetCurrency()
+		public async Task<IEnumerable<CurrencyModel>> GetCurrency(string properties = "")
 		{
 			using (var client = new HttpClient())
 			{
-				string requestUri = "https://api.coincap.io/v2/assets?sort*rank";
+				string requestUri = $"https://api.coincap.io/v2/assets?{properties}";
 				var response = await client.GetAsync(requestUri);
 
 				string jsonResponse = await response.Content.ReadAsStringAsync();

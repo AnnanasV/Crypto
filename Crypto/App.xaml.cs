@@ -8,7 +8,7 @@ namespace Crypto
 	/// </summary>
 	public partial class App : Application
 	{
-		protected override async void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
 		{
 			MainWindow = new MainWindow() { DataContext = new MainVM() };
 			MainWindow.Show();
