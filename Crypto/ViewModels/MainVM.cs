@@ -1,15 +1,9 @@
-﻿using Crypto.Utilities;
+﻿using Crypto.Utilities.Navigators;
 
 namespace Crypto.ViewModels
 {
 	public class MainVM
 	{
-		public ViewModelBase CurrentViewModel { get; }
-
-        public MainVM()
-        {
-            CurrentViewModel = new TopCryprocurrenciesVM(); // will be navigation
-        }
-
+		public INavigator Navigator { get; set; } = new Navigator();
     }
 }

@@ -107,15 +107,10 @@
         <Setter Property="Width" Value="200" />
         <Setter Property="Margin" Value="0, 30, 30, 30" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Border Background="#D8DADC" CornerRadius="10">
-                        <TextBox Margin="2" Background="Transparent" Foreground="#9C9996" VerticalAlignment="Center" Text="{Binding SearchText}" BorderThickness="0" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
+        <Setter Property="Background" Value="#D8DADC" />
+        <Setter Property="Foreground" Value="#9C9996" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
 </ResourceDictionary>

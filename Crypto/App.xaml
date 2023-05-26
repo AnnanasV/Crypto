@@ -1,6 +1,9 @@
 ﻿<Application x:Class="Crypto.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:Crypto.View"
+             xmlns:vm="clr-namespace:Crypto.ViewModels">
+    
     <Application.Resources>
 
         <ResourceDictionary>
@@ -8,8 +11,17 @@
                 <ResourceDictionary Source="Utilities/LightTemplate.xaml" />
                 <ResourceDictionary Source="Utilities/DarkTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
 
+        <DataTemplate DataType="{x:Type vm:TopCryprocurrenciesVM}">
+            <v:TopCryprocurrenciesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CurrencyExchangeVM}">
+            <v:CurrencyExchangeView />
+        </DataTemplate>
+
+        </ResourceDictionary>
+        
     </Application.Resources>
 
 </Application>

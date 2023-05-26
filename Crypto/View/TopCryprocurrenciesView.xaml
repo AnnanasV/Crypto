@@ -8,9 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="780">
 
-    <UserControl.DataContext>
-        <vm:TopCryprocurrenciesVM />
-    </UserControl.DataContext>
     <UserControl.Resources>
         <ResourceDictionary>
             <local:PercentsToColorConverter x:Key="PercentsToColorConverter"/>
@@ -22,7 +19,6 @@
     <Grid>
         <Border Style="{DynamicResource BorderTheme}" CornerRadius="0, 0, 20, 0" />
         <Grid>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -37,7 +33,13 @@
                 <TextBlock Grid.Column="1" Text="Search:" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#858585" />
                 <TextBox x:Name="Searching" Grid.Column="2" Text="{Binding SearchText, Mode=TwoWay,
                          UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right"
-                         Style="{DynamicResource SearchBox}" />
+                         Style="{DynamicResource SearchBox}">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5" />
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </Grid>
             <Grid Grid.Row="1" Margin="30, 0, 30, 20">
                 <ListView Grid.Column="0" ItemsSource="{Binding SelectedCurrencies, Mode=TwoWay,

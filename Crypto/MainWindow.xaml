@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Crypto.ViewModels"
         xmlns:views="clr-namespace:Crypto.View"
         mc:Ignorable="d"
         Title="Crypto" 
@@ -16,14 +17,13 @@
 
     <Grid MouseDown="Drag">
         <Border Style="{DynamicResource BorderTheme}" CornerRadius="20"/>
-        
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65" />
                     <RowDefinition Height="*" />
@@ -35,11 +35,30 @@
                 </StackPanel>
 
                 <Grid Grid.Row="1">
-                    <views:TopCryprocurrenciesView DataContext="{Binding CurrentViewModel}" />
+                    <ContentControl Content="{Binding Navigator.CurrentVM}" >
+                        <ContentControl.Resources>
+                            <DataTemplate DataType="{x:Type vm:TopCryprocurrenciesVM}">
+                                <views:TopCryprocurrenciesView />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:CurrencyExchangeVM}">
+                                <views:CurrencyExchangeView />
+                            </DataTemplate>
+                        </ContentControl.Resources>
+                    </ContentControl>
                 </Grid>
-                
+
             </Grid>
             <ToggleButton x:Name="ColorMode" Style="{DynamicResource SwitchColorMode}" Click="SwitchColorMode_Click" Cursor="Hand" />
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <views:NavigationBarView DataContext="{Binding Navigator}" />
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 
