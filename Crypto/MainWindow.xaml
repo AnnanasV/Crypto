@@ -30,8 +30,8 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Height="40" Margin="15, 15, 5, 15" VerticalAlignment="Top">
-                    <Button x:Name="MinimizeButton" Style="{DynamicResource Btn}" Content="—" Click="MinimizeButton_Click" />
-                    <Button x:Name="CloseButton" Style="{DynamicResource Btn}" Content="X" Click="CloseButton_Click" />
+                    <Button x:Name="MinimizeButton" Style="{DynamicResource Btn}" Content="—" Height="35" Width="35" Click="MinimizeButton_Click" />
+                    <Button x:Name="CloseButton" Style="{DynamicResource Btn}" Content="X" Height="35" Width="35" Click="CloseButton_Click" />
                 </StackPanel>
 
                 <Grid Grid.Row="1">
@@ -48,13 +48,25 @@
                 </Grid>
 
             </Grid>
-            <ToggleButton x:Name="ColorMode" Style="{DynamicResource SwitchColorMode}" Click="SwitchColorMode_Click" Cursor="Hand" />
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="65" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border Style="{DynamicResource NavBorder}" CornerRadius="20, 20, 0, 0" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Margin="20, 25, 15, 0" FontSize="14" HorizontalAlignment="Left" Text="COLOR THEME" FontFamily="ArialLight" Style="{DynamicResource Text}" />
+                        <ToggleButton Grid.Column="1" Margin="0, 20, 20, 0" HorizontalAlignment="Right" x:Name="ColorMode" Style="{DynamicResource SwitchColorMode}" Click="SwitchColorMode_Click" Cursor="Hand" />
+                    </Grid>
+                    <Line X1="10" Y1="60" X2="180" Y2="60" Style="{DynamicResource LineColor}" />
+                </Grid>
+
                 <Grid Grid.Row="1">
                     <views:NavigationBarView DataContext="{Binding Navigator}" />
                 </Grid>
