@@ -1,5 +1,6 @@
 ﻿using Crypto.Utilities.Navigators;
 using Crypto.ViewModels;
+using System;
 
 namespace Crypto.Utilities.Commands
 {
@@ -16,13 +17,16 @@ namespace Crypto.Utilities.Commands
 			if(parameter is ViewType)
 			{
 				ViewType viewType = (ViewType)parameter;
-				switch(viewType)
+				if (_navigator.CurrentVM is IDisposable)
+					((IDisposable)_navigator.CurrentVM).Dispose();
+				switch (viewType)
 				{
 					case ViewType.TopCurrencies:
-						_navigator.CurrentVM = new TopCryprocurrenciesVM();
+							_navigator.CurrentVM = new TopCryprocurrenciesVM();
 						break;
 					case ViewType.Exchange:
-						_navigator.CurrentVM = new CurrencyExchangeVM();
+						if (!(_navigator.CurrentVM is CurrencyExchangeVM))
+							_navigator.CurrentVM = new CurrencyExchangeVM();
 						break;
 				}
 			}
