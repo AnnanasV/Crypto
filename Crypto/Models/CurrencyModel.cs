@@ -28,5 +28,8 @@ namespace Crypto.Models
 
 		[JsonPropertyName("volumeUsd24Hr")]
 		public string VolumeUsd24Hr { get; set; }
+
+		[JsonPropertyName("marketCapUsd")]
+		public string MarketCapUsd { get; set; }
 	}
 }

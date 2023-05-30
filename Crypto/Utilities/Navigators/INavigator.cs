@@ -5,7 +5,7 @@ namespace Crypto.Utilities.Navigators
 	public enum ViewType
 	{
 		TopCurrencies,
-		Exchange
+		CurrencyParameters
 	}
 
 	public interface INavigator

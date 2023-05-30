@@ -22,11 +22,12 @@ namespace Crypto.Utilities.Commands
 				switch (viewType)
 				{
 					case ViewType.TopCurrencies:
+						//if (!(_navigator.CurrentVM is TopCryprocurrenciesVM))
 							_navigator.CurrentVM = new TopCryprocurrenciesVM();
 						break;
-					case ViewType.Exchange:
-						if (!(_navigator.CurrentVM is CurrencyExchangeVM))
-							_navigator.CurrentVM = new CurrencyExchangeVM();
+					case ViewType.CurrencyParameters:
+						if(!(_navigator.CurrentVM is CurrencyParametersVM))
+							_navigator.CurrentVM = new CurrencyParametersVM();
 						break;
 				}
 			}

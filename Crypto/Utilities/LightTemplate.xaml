@@ -4,25 +4,25 @@
 
     <SolidColorBrush x:Key="BackgroundLightTheme" Color="#E5E5E5" />
     <SolidColorBrush x:Key="BackgroundLightTheme2" Color="#D2D4D6" />
-    <SolidColorBrush x:Key="ForegroundLightTheme" Color="#616161" />
+    <SolidColorBrush x:Key="ForegroundTheme" Color="#616161" />
 
 
     <!-- STYLES -->
 
-    <Style x:Key="LineColor" TargetType="Line">
-        <Setter Property="Stroke" Value="{DynamicResource ForegroundLightTheme}" />
+    <Style x:Key="LineColor" TargetType="{x:Type Line}">
+        <Setter Property="Stroke" Value="{DynamicResource ForegroundTheme}" />
     </Style>
 
-    <Style x:Key="BorderTheme" TargetType="Border">
+    <Style x:Key="BorderTheme" TargetType="{x:Type Border}">
         <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme}" />
     </Style>
 
-    <Style x:Key="NavBorder" TargetType="Border">
+    <Style x:Key="NavBorder" TargetType="{x:Type Border}">
         <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme2}" />
     </Style>
 
-    <Style x:Key="Btn" TargetType="Button">
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundLightTheme}" />
+    <Style x:Key="Btn" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTheme}" />
         <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="Arial Black" />
@@ -45,19 +45,19 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ForegroundLightTheme}" />
+                <Setter Property="Background" Value="{DynamicResource ForegroundTheme}" />
                 <Setter Property="Foreground" Value="{DynamicResource BackgroundLightTheme}" />
             </Trigger>
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="NavBtn" TargetType="RadioButton">
+    <Style x:Key="NavBtn" TargetType="{x:Type RadioButton}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Height" Value="40" />
-        <Setter Property="Width" Value="180" />
+        <Setter Property="Width" Value="190" />
         <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme2}" />
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundLightTheme}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTheme}" />
         <Setter Property="FontFamily" Value="Tahoma" />
         <Setter Property="FontSize" Value="16" />
 
@@ -73,30 +73,30 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ForegroundLightTheme}" />
+                <Setter Property="Background" Value="{DynamicResource ForegroundTheme}" />
                 <Setter Property="Foreground" Value="{DynamicResource BackgroundLightTheme2}" />
             </Trigger>
 
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ForegroundLightTheme}" />
+                <Setter Property="Background" Value="{DynamicResource ForegroundTheme}" />
                 <Setter Property="Foreground" Value="{DynamicResource BackgroundLightTheme2}" />
             </Trigger>
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="Text" TargetType="TextBlock">
+    <Style x:Key="Text" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="30" />
         <Setter Property="FontFamily" Value="Yu Gothic UI Semibold" />
         <Setter Property="Foreground" Value="#292929" />
     </Style>
 
-    <Style x:Key="SwitchColorMode" TargetType="ToggleButton">
+    <Style x:Key="SwitchColorMode" TargetType="{x:Type ToggleButton}">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Margin" Value="20, 20, 20, 20" />
-        <Setter Property="Foreground" Value="{DynamicResource ForegroundLightTheme}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTheme}" />
         <Setter Property="FontFamily" Value="Arial Black" />
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
@@ -112,7 +112,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TableData" TargetType="ListViewItem">
+    <Style x:Key="TableData" TargetType="{x:Type ListViewItem}">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Margin" Value="0, 5, 0, 0" />
         <Setter Property="Height" Value="55" />
@@ -125,14 +125,14 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="Table" TargetType="ListView">
+    <Style x:Key="Table" TargetType="{x:Type ListView}">
         <Setter Property="Padding" Value="15" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Background" Value="#CACBCC" />
+        <Setter Property="Background" Value="#C2C3C4" />
 
     </Style>
 
-    <Style x:Key="Header" TargetType="GridViewColumnHeader">
+    <Style x:Key="Header" TargetType="{x:Type GridViewColumnHeader}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
@@ -148,7 +148,7 @@
         <Setter Property="FontSize" Value="16" />
     </Style>
 
-    <Style x:Key="SearchBox" TargetType="TextBox">
+    <Style x:Key="SearchBox" TargetType="{x:Type TextBox}">
         <Setter Property="Height" Value="35" />
         <Setter Property="Width" Value="200" />
         <Setter Property="Margin" Value="0, 30, 30, 30" />
@@ -157,6 +157,18 @@
         <Setter Property="Foreground" Value="#9C9996" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme}" />
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundTheme}" />
+        <Setter Property="Content" Value="6" />
+        <Setter Property="FontFamily" Value="Marlett" />
+    </Style>
+
+    <Style x:Key="ComboBoxText" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{DynamicResource BackgroundLightTheme}" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
 
 </ResourceDictionary>

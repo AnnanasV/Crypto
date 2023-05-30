@@ -20,7 +20,7 @@
                     <RowDefinition Height="65" />
                 </Grid.RowDefinitions>
                 <RadioButton IsChecked="True" Grid.Row="0" Style="{DynamicResource NavBtn}" Command="{Binding UpdateCurrentViewCommand}" CommandParameter="{x:Static nav:ViewType.TopCurrencies}" Content="TOP CURRENCIES" />
-                <RadioButton Grid.Row="1" Style="{DynamicResource NavBtn}" Command="{Binding UpdateCurrentViewCommand}" CommandParameter="{x:Static nav:ViewType.Exchange}" Content="EXCHANGE" />
+                <RadioButton Grid.Row="1" Style="{DynamicResource NavBtn}" Command="{Binding UpdateCurrentViewCommand}" CommandParameter="{x:Static nav:ViewType.CurrencyParameters}" Content="CURRENCY PARAMETERS" />
             </Grid>
         </Grid>
     </Grid>
