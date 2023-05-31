@@ -10,7 +10,11 @@ namespace Crypto.Utilities.Converters
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			float percent = (float)((CurrencyModel)value).ChangePercent24Hr;
+			if (value == null) return null;
+			float percent;
+			if (value is CurrencyModel)
+				percent = (float)((CurrencyModel)value).ChangePercent24Hr;
+			else Single.TryParse(value.ToString(), out percent);
 			if (percent > 0)
 				return new SolidColorBrush(Color.FromRgb(135, 201, 131));
 			else return new SolidColorBrush(Colors.Red);

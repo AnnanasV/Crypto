@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Crypto.Utilities.Converters;
+using System.Windows.Controls;
 
 namespace Crypto.View
 {
@@ -10,7 +11,7 @@ namespace Crypto.View
 		public CurrencyParametersView()
 		{
 			InitializeComponent();
-			PricesChartAxisY.LabelFormatter = value => $"${value}";
+			PricesChartAxisY.LabelFormatter = value => $"${ChangeNumberFormat.ReduceNumber(((decimal)value).ToString())}";
 		}
 	}
 }
