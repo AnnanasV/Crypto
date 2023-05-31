@@ -82,23 +82,25 @@
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2" Background="{DynamicResource BackgroundTheme2}"  Height="350" Margin="20">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".3" ShadowDepth="1"/>
+                </Grid.Effect>
                 <!-- Chart -->
-
-                <lvc:CartesianChart LegendLocation="None" Height="350" Margin="20">
+                <lvc:CartesianChart LegendLocation="None" Margin="0, 10" Style="{DynamicResource ChartStyle}">
                     <lvc:CartesianChart.Series>
-                        <lvc:LineSeries Title="Price" Values="{Binding Prices, UpdateSourceTrigger=PropertyChanged}" />
+                        <lvc:LineSeries PointGeometrySize="5" LineSmoothness="1" PointForeground="AliceBlue" Title="Price" Style="{DynamicResource PriceChart}" Values="{Binding Prices, UpdateSourceTrigger=PropertyChanged}" />
                     </lvc:CartesianChart.Series>
 
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis Title="Time" Labels="{Binding Times}" />
+                        <lvc:Axis Labels="{Binding Times}" />
                     </lvc:CartesianChart.AxisX>
 
                     <lvc:CartesianChart.AxisY>
-                        <lvc:Axis x:Name="PricesChartAxisY" Title="Prices" />
+                        <lvc:Axis x:Name="PricesChartAxisY" />
                     </lvc:CartesianChart.AxisY>
-
                 </lvc:CartesianChart>
+
             </Grid>
 
         </Grid>

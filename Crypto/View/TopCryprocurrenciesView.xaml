@@ -43,6 +43,9 @@
                 </TextBox>
             </Grid>
             <Grid Grid.Row="1" Margin="30, 0, 30, 20">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" Opacity=".3" ShadowDepth="1"/>
+                </Grid.Effect>
                 <ListView x:Name="LV" Grid.Column="0" ItemsSource="{Binding SelectedCurrencies, Mode=TwoWay,
                           UpdateSourceTrigger=PropertyChanged}" MaxHeight="500"
                           Style="{DynamicResource Table}"
