@@ -6,9 +6,12 @@ namespace Crypto.Models
     public class HistoryPriceModel
     {
 		[JsonPropertyName("priceUsd")]
-		public string PriceUsd { get; set; }
+		public decimal PriceUsd { get; set; }
 
 		[JsonPropertyName("date")]
 		public DateTime Date { get; set; }
+
+		[JsonPropertyName("time")]
+		public long Time { get; set; }
 	}
 }

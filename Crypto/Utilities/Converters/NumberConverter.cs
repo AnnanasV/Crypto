@@ -10,6 +10,7 @@ namespace Crypto.Utilities.Converters
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
+			if (value == null) return null;
 			if (parameter != null && parameter.ToString() == nameof(CurrencyModel.PriceUsd))
 			{
 				value = ReduceNumber(value.ToString());

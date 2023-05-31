@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Crypto.Utilities.Navigators;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Crypto.View
 {
@@ -12,7 +14,7 @@ namespace Crypto.View
 			InitializeComponent();
 			ResizeColumnsWidth(TopCurrenciesGV);
 		}
-		
+
 		private void ResizeColumnsWidth(GridView gridView)
 		{
 			if (gridView != null)

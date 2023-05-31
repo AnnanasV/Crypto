@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Crypto.Utilities.Converters"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="780">
+
     <UserControl.Resources>
         <ResourceDictionary>
             <local:PercentsToColorConverter x:Key="PercentsToColorConverter"/>
@@ -13,7 +15,7 @@
             <local:NumberConverter x:Key="NumberConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
-    
+
     <Grid>
         <Border Style="{DynamicResource BorderTheme}" CornerRadius="0, 0, 20, 20" />
         <Grid>
@@ -21,16 +23,28 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
+
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90" />
+                    <ColumnDefinition Width="70" />
                     <ColumnDefinition Width="auto" />
-                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="170" />
                 </Grid.ColumnDefinitions>
-                
-                <Image Grid.Column="1" Margin="15, 0, 0, 0" HorizontalAlignment="Right" Height="30" Width="30" Source="{Binding SelectedCurrency, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ImageConverter}}" />
-                <TextBlock Grid.Column="2" Text="{Binding SelectedCurrency.Name, UpdateSourceTrigger=PropertyChanged}" Margin="0, 20, 30, 20" Style="{DynamicResource Text}" />
-                
+
+                <Image Grid.Column="1" Margin="30, 0, 0, 0" HorizontalAlignment="Right" Height="30" Width="30" Source="{Binding SelectedCurrency, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ImageConverter}}" />
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{Binding SelectedCurrency.Name, UpdateSourceTrigger=PropertyChanged, FallbackValue=Currency}" Margin="0, 0, 30, 0" Style="{DynamicResource Text}" />
+                    <TextBlock Grid.Row="1" FontSize="14" Margin="0" Text="{Binding SelectedCurrency.Symbol, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource Text}" />
+                </Grid>
+
+
                 <ComboBox HorizontalAlignment="Right" SelectedItem="{Binding SelectedCurrency, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Grid.Column="0" ItemsSource="{Binding Currencies, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource CurrencyBox}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -38,7 +52,55 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
+
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontFamily="Tahoma" Grid.Row="0" Text="Market Cap" FontSize="12" HorizontalAlignment="Center" Style="{DynamicResource Text2}" />
+                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" Text="{Binding SelectedCurrency.MarketCapUsd, UpdateSourceTrigger=PropertyChanged, FallbackValue=$ ..., StringFormat=${0:F3}, Converter={StaticResource NumberConverter}}" Style="{DynamicResource Text2}" />
+                </Grid>
+
+                <Grid Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontFamily="Tahoma" Grid.Row="0" Text="Volume (24hr)" FontSize="12" HorizontalAlignment="Center" Style="{DynamicResource Text2}" />
+                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" Text="{Binding SelectedCurrency.VolumeUsd24Hr, UpdateSourceTrigger=PropertyChanged, FallbackValue=$ ..., StringFormat=${0:F3}, Converter={StaticResource NumberConverter}}" Style="{DynamicResource Text2}" />
+                </Grid>
+
+                <Grid Grid.Column="5" Margin="0, 0, 30, 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock FontFamily="Tahoma" Grid.Row="0" Text="Supply" FontSize="12" HorizontalAlignment="Center" Style="{DynamicResource Text2}" />
+                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" Text="{Binding SelectedCurrency.Supply, UpdateSourceTrigger=PropertyChanged, FallbackValue=..., StringFormat={}{0:F3}, Converter={StaticResource NumberConverter}}" Style="{DynamicResource Text2}" />
+                </Grid>
+
             </Grid>
+
+            <Grid Grid.Row="1">
+                <!-- Chart -->
+
+                <lvc:CartesianChart LegendLocation="None" Height="350" Margin="20">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Title="Price" Values="{Binding Prices, UpdateSourceTrigger=PropertyChanged}" />
+                    </lvc:CartesianChart.Series>
+
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis Title="Time" Labels="{Binding Times}" />
+                    </lvc:CartesianChart.AxisX>
+
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis x:Name="PricesChartAxisY" Title="Prices" />
+                    </lvc:CartesianChart.AxisY>
+
+                </lvc:CartesianChart>
+            </Grid>
+
         </Grid>
     </Grid>
 </UserControl>

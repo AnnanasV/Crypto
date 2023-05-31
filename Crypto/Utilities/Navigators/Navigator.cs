@@ -1,4 +1,5 @@
-﻿using Crypto.Utilities.Commands;
+﻿using Crypto.Models;
+using Crypto.Utilities.Commands;
 using Crypto.ViewModels;
 using System.Windows.Input;
 
@@ -11,7 +12,14 @@ namespace Crypto.Utilities.Navigators
 			CurrentVM = new TopCryprocurrenciesVM();
         }
 
-        private ViewModelBase _currentVM;
+		private CurrencyModel _selectedCurrency;
+		public CurrencyModel SelectedCurrency
+		{
+			get { return _selectedCurrency; }
+			set { _selectedCurrency = value; OnPropertyChanged(nameof(SelectedCurrency)); }
+		}
+
+		private ViewModelBase _currentVM;
 		public ViewModelBase CurrentVM
 		{
 			get { return _currentVM; }

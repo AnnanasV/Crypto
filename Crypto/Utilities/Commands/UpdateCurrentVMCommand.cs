@@ -6,8 +6,8 @@ namespace Crypto.Utilities.Commands
 {
 	public class UpdateCurrentVMCommand : CommandBase
 	{
-		private INavigator _navigator;
-        public UpdateCurrentVMCommand(INavigator navigator)
+		private Navigator _navigator;
+        public UpdateCurrentVMCommand(Navigator navigator)
         {
 			_navigator = navigator;
         }

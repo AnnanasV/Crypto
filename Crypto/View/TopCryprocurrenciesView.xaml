@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Crypto.Utilities.Converters"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:nav="clr-namespace:Crypto.Utilities.Navigators"
              mc:Ignorable="d" 
              d:DesignHeight="635" d:DesignWidth="780">
 
@@ -41,13 +43,13 @@
                 </TextBox>
             </Grid>
             <Grid Grid.Row="1" Margin="30, 0, 30, 20">
-                <ListView Grid.Column="0" ItemsSource="{Binding SelectedCurrencies, Mode=TwoWay,
+                <ListView x:Name="LV" Grid.Column="0" ItemsSource="{Binding SelectedCurrencies, Mode=TwoWay,
                           UpdateSourceTrigger=PropertyChanged}" MaxHeight="500"
                           Style="{DynamicResource Table}"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           VirtualizingPanel.ScrollUnit="Pixel"
                           ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                          ItemContainerStyle="{DynamicResource TableData}" >
+                          ItemContainerStyle="{DynamicResource TableData}">
                     <ListView.View>
                         <GridView x:Name="TopCurrenciesGV" ColumnHeaderContainerStyle="{DynamicResource Header}">
                             <GridViewColumn Header="Rank">

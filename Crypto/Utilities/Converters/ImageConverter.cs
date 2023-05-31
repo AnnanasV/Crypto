@@ -9,16 +9,9 @@ namespace Crypto.Utilities.Converters
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			try
-			{
+			if (value == null) return null;
 			string path = ((CurrencyModel)value).Symbol.ToLower();
 			return $"https://assets.coincap.io/assets/icons/{path}@2x.png";
-
-			}
-			catch
-			{
-				return null;
-			}
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
