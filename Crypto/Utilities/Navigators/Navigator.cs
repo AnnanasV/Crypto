@@ -12,13 +12,6 @@ namespace Crypto.Utilities.Navigators
 			CurrentVM = new TopCryprocurrenciesVM();
         }
 
-		private CurrencyModel _selectedCurrency;
-		public CurrencyModel SelectedCurrency
-		{
-			get { return _selectedCurrency; }
-			set { _selectedCurrency = value; OnPropertyChanged(nameof(SelectedCurrency)); }
-		}
-
 		private ViewModelBase _currentVM;
 		public ViewModelBase CurrentVM
 		{
