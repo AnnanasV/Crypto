@@ -13,7 +13,7 @@ namespace Crypto.Utilities.Converters
 			int digits = 2; // after comma
 			int indexPoint = number.LastIndexOf(",");
 			int indexZero = indexPoint;
-			for (int i = indexPoint + 1; number[i] == '0'; i++)
+			for (int i = indexPoint + 1; number.Length >= i && number[i] == '0' && indexPoint >= 0; i++)
 			{
 				++indexZero;
 			}
