@@ -1,5 +1,4 @@
-﻿using Crypto.Models;
-using Crypto.Utilities.Commands;
+﻿using Crypto.Utilities.Commands;
 using Crypto.ViewModels;
 using System.Windows.Input;
 
